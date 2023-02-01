@@ -44,9 +44,9 @@ const map = {
 
 class Factory {
   static calculate(type: string, price: number[]): Payment {
-    return new map[type](type, price);
+    return new map[type as keyof typeof map](type, price);
   }
 }
 
-Factory.calculate('creditCard', [1000, 2000, 3000]).pay();
 Factory.calculate('linePay', [1000, 2000, 3000]).pay();
+Factory.calculate('creditCard', [1000, 2000, 3000]).pay();
